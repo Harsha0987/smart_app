@@ -1,0 +1,109 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Latest Updates Styles */
+.latest-updates {
+  background: linear-gradient(90deg, #f8fafc, #e0f2fe);
+  padding: 15px;
+  margin: 20px auto;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 1000px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.updates-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+.updates-ticker {
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-content {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-up 10s linear infinite;
+}
+
+.update-item {
+  font-size: 0.95rem;
+  padding: 6px 0;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.update-item strong {
+  color: #dc2626;
+}
+
+.update-item .time {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.no-updates {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+/* Latest Updates Box */
+.latest-updates-box {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  max-width: 400px;
+  margin: auto;
+}
