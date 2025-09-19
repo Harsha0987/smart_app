@@ -1,0 +1,9 @@
+{
+  "name": "smart_app",
+  "private": true,
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  }
+}
