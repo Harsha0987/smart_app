@@ -15,7 +15,9 @@ function EmergencyAlerts() {
 
   const fetchAlerts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/alerts");
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/alerts`
+      );
       setAlerts(res.data);
     } catch (err) {
       console.error("Error fetching alerts:", err);
@@ -35,7 +37,10 @@ function EmergencyAlerts() {
       let res;
       if (editingId) {
         // Edit existing alert
-        res = await axios.put(`http://localhost:5000/api/alerts/${editingId}`, form);
+        res = await axios.put(
+          `${process.env.REACT_APP_API_URL}/api/alerts/${editingId}`,
+          form
+        );
         if (res.data.success) {
           setPopup({ show: true, message: "✅ Alert updated successfully!" });
         } else {
@@ -43,11 +48,14 @@ function EmergencyAlerts() {
         }
       } else {
         // Add new alert
-        res = await axios.post("http://localhost:5000/api/alerts", {
-          ...form,
-          createdBy: "Harsha",
-          createdAt: new Date().toISOString(),
-        });
+        res = await axios.post(
+          `${process.env.REACT_APP_API_URL}/api/alerts`,
+          {
+            ...form,
+            createdBy: "Harsha",
+            createdAt: new Date().toISOString(),
+          }
+        );
 
         if (res.status === 200 || res.status === 201) {
           setPopup({ show: true, message: "✅ Alert sent successfully!" });
@@ -73,7 +81,11 @@ function EmergencyAlerts() {
   };
 
   const handleEdit = (alert) => {
-    setForm({ type: alert.type, message: alert.message, location: alert.location });
+    setForm({
+      type: alert.type,
+      message: alert.message,
+      location: alert.location,
+    });
     setEditingId(alert._id);
   };
 
@@ -85,7 +97,9 @@ function EmergencyAlerts() {
   const handleDelete = async () => {
     if (!confirmDelete) return;
     try {
-      const res = await axios.delete(`http://localhost:5000/api/alerts/${confirmDelete}`);
+      const res = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/alerts/${confirmDelete}`
+      );
       if (res.status === 200) {
         setPopup({ show: true, message: "🗑️ Alert deleted successfully!" });
         fetchAlerts();
@@ -109,7 +123,6 @@ function EmergencyAlerts() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-100 to-yellow-100 p-6 relative">
-
       {/* Popup */}
       {popup.show && (
         <motion.div
@@ -158,7 +171,9 @@ function EmergencyAlerts() {
         transition={{ duration: 0.6 }}
         className="max-w-3xl mx-auto bg-white shadow-lg rounded-2xl p-8"
       >
-        <h1 className="text-3xl font-bold text-red-600 text-center mb-6">🚨 Emergency Alerts</h1>
+        <h1 className="text-3xl font-bold text-red-600 text-center mb-6">
+          🚨 Emergency Alerts
+        </h1>
 
         {/* Form */}
         <form
@@ -214,17 +229,26 @@ function EmergencyAlerts() {
         </form>
 
         {/* Alerts List */}
-        <h2 className="text-xl font-semibold mb-4 text-gray-800">Recent Alerts</h2>
+        <h2 className="text-xl font-semibold mb-4 text-gray-800">
+          Recent Alerts
+        </h2>
         <div className="space-y-4">
           {alerts.length === 0 ? (
             <p className="text-gray-500">No alerts yet</p>
           ) : (
             alerts.map((alert) => (
-              <div key={alert._id} className="bg-red-50 p-4 rounded-xl shadow relative">
-                <h3 className="text-lg font-bold text-red-700">{alert.type} 🚨</h3>
+              <div
+                key={alert._id}
+                className="bg-red-50 p-4 rounded-xl shadow relative"
+              >
+                <h3 className="text-lg font-bold text-red-700">
+                  {alert.type} 🚨
+                </h3>
                 <p>{alert.message}</p>
                 <p className="text-sm text-gray-600">📍 {alert.location}</p>
-                <p className="text-sm text-gray-600">🕒 {formatDateTime(alert.createdAt)}</p>
+                <p className="text-sm text-gray-600">
+                  🕒 {formatDateTime(alert.createdAt)}
+                </p>
                 <div className="flex gap-2 mt-2">
                   <button
                     onClick={() => handleEdit(alert)}

@@ -30,9 +30,9 @@ function LatestUpdates() {
     const fetchUpdates = async () => {
       try {
         const [eventsRes, alertsRes, reportsRes] = await Promise.all([
-          fetch("http://localhost:5000/api/events").then((res) => res.json()),
-          fetch("http://localhost:5000/api/alerts").then((res) => res.json()),
-          fetch("http://localhost:5000/api/reports").then((res) => res.json()),
+          fetch(`${process.env.REACT_APP_API_URL}/api/events`).then((res) => res.json()),
+          fetch(`${process.env.REACT_APP_API_URL}/api/alerts`).then((res) => res.json()),
+          fetch(`${process.env.REACT_APP_API_URL}/api/reports`).then((res) => res.json()),
         ]);
 
         const now = new Date();

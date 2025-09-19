@@ -13,7 +13,7 @@ function EventsReminders({ onEventsUpdate }) {
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(null);
 
-  const API_URL = "http://localhost:5000/api/events";
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const fetchEvents = useCallback(async () => {
     try {
