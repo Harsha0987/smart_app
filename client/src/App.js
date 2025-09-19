@@ -24,11 +24,12 @@ function App() {
  
 
   useEffect(() => {
-    fetch("/api/test")
-      .then((res) => res.json())
-    
-      .catch((err) => console.error("Error fetching test message:", err));
-  }, []);
+  fetch(`${process.env.REACT_APP_API_URL}/api/test`)
+    .then((res) => res.json())
+    .then((data) => console.log("✅ Backend says:", data))
+    .catch((err) => console.error("❌ Error fetching test message:", err));
+}, []);
+
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-gray-900">

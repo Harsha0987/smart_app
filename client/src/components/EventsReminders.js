@@ -15,12 +15,11 @@ function EventsReminders({ onEventsUpdate }) {
 
   const API_URL = "http://localhost:5000/api/events";
 
-  // Fetch events (memoized)
   const fetchEvents = useCallback(async () => {
     try {
       const res = await axios.get(API_URL);
       setEvents(res.data);
-      if (onEventsUpdate) onEventsUpdate(res.data); // inform parent/latest updates
+      if (onEventsUpdate) onEventsUpdate(res.data); 
     } catch (err) {
       console.error("Error fetching events:", err);
       toast.error("Failed to load events");
@@ -31,11 +30,11 @@ function EventsReminders({ onEventsUpdate }) {
     fetchEvents();
   }, [fetchEvents]);
 
-  // Helper: show success toast
+  
   const showSuccess = (msg) => toast.success(`✅ ${msg}`, { position: "top-center", autoClose: 2000 });
   const showError = (msg) => toast.error(`❌ ${msg}`, { position: "top-center", autoClose: 3000 });
 
-  // Add or Save (edit)
+
   const handleAddOrSave = async () => {
     if (input.trim() === "" || date === "") {
       showError("Please provide event title and date/time");
@@ -43,7 +42,6 @@ function EventsReminders({ onEventsUpdate }) {
     }
 
     try {
-      // Ensure the date we send is an ISO string (safe)
       const payload = { text: input.trim(), date: new Date(date).toISOString() };
 
       if (editingEvent) {
@@ -55,15 +53,15 @@ function EventsReminders({ onEventsUpdate }) {
         showSuccess("Event updated");
         if (onEventsUpdate) onEventsUpdate(await fetchLatestEvents());
       } else {
-        // POST: create new
+      
         const res = await axios.post(API_URL, payload);
-        // put newest on top
+       
         setEvents((prev) => [res.data, ...prev]);
         showSuccess("Event created");
         if (onEventsUpdate) onEventsUpdate(await fetchLatestEvents());
       }
 
-      // Reset form
+     
       setInput("");
       setDate("");
     } catch (err) {

@@ -4,9 +4,9 @@ const PostSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     content: { type: String, required: true },
-    image: { type: String }, // Store the image file name
+    image: { type: String }, 
   },
-  { timestamps: true } // Automatically adds createdAt and updatedAt fields
+  { timestamps: true }
 );
 
 export default mongoose.model("Post", PostSchema);

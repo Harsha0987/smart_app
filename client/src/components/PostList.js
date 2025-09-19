@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function PostList() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/posts");
+        const response = await axios.get(`${API_URL}/api/posts`);
         setPosts(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -51,7 +53,7 @@ function PostList() {
               {post.image && (
                 <div className="overflow-hidden rounded-lg">
                   <img
-                    src={`http://localhost:5000/uploads/${post.image}`}
+                    src={`${API_URL}/uploads/${post.image}`}
                     alt={post.title}
                     className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
                   />

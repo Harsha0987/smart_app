@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const alertSchema = new mongoose.Schema({
-  type: { type: String, required: true }, // fire, theft, medical, etc.
+  type: { type: String, required: true },
   message: { type: String, required: true },
-  createdBy: { type: String, required: true }, // user id / name
-  location: { type: String }, // optional GPS or landmark
+  createdBy: { type: String, required: true }, 
+  location: { type: String }, 
   createdAt: { type: Date, default: Date.now }
 });
 
