@@ -47,9 +47,9 @@ function EventsReminders({ onEventsUpdate }) {
       const payload = { text: input.trim(), date: new Date(date).toISOString() };
 
       if (editingEvent) {
-        // PUT: update existing
+        
         const res = await axios.put(`${API_URL}/${editingEvent._id}`, payload);
-        // replace in local state
+       
         setEvents((prev) => prev.map((e) => (e._id === editingEvent._id ? res.data : e)));
         setEditingEvent(null);
         showSuccess("Event updated");

@@ -6,9 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 function SOSButton() {
   const handleClick = () => {
     // You can call your API here to send the emergency alert
-    // Example: fetch("/api/send-emergency-alert", { method: "POST" })
-
-    // Show notification
+  // Show notification
     toast.success("🚨 Emergency alert sent successfully!", {
       position: "top-center",
       autoClose: 3000,

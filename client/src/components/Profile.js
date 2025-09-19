@@ -12,7 +12,7 @@ function Profile() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/login");
-    window.location.reload(); // reload to reset navbar
+    window.location.reload();
   };
 
   if (!storedUser) {

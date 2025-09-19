@@ -1,12 +1,24 @@
-# Smart App 🏡📱
+# Smart App 🏡📱 
 
-Smart App is a **neighborhood community application** designed for apartment residents.
-It helps people easily **find their parked vehicles in the basement using pillar numbers** and also shows empty parking slots so that everyone can park without confusion.
+Smart App is a **neighborhood community application** designed for apartment residents.  
+It helps people easily **find their parked vehicles in the basement using pillar numbers** and also shows empty parking slots so that everyone can park without confusion.  
 
-The app also has a **community hub** with features like profile management, posts, and more, making it a one-stop solution for residents.
+The app also has a **community hub** with features like profile management, posts, and more, making it a one-stop solution for residents.  
 
-A **full-stack MERN application** with a **modern frontend (React)** and a **secure backend (Node.js + Express + MongoDB)**.
-This app includes **user authentication (register/login)**, **profile management**, and a **basement parking slot reservation system with undo functionality**.
+A **full-stack MERN application** with a **modern frontend (React)** and a **secure backend (Node.js + Express + MongoDB)**.  
+This app includes **user authentication (register/login)**, **profile management**, and a **basement parking slot reservation system with undo functionality**.  
+
+---
+
+## ⚡ Skills & Tech Stack
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=react,html,css,js,tailwind,redux,nodejs,express,mongodb,git,github,vscode" />
+</p>
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=⚛️+React+Frontend;🎨+TailwindCSS+Styling;🚀+Express.js+Backend;🗄️+MongoDB+Database;🔑+JWT+Authentication;💻+Full+Stack+MERN+Application" alt="Typing SVG"/>
+</p>
 
 ---
 
@@ -29,7 +41,7 @@ smart-app/
 │
 ├── README.md        # Project documentation
 └── .gitignore
-```
+````
 
 ---
 
@@ -41,14 +53,6 @@ smart-app/
 ✅ Basement Parking Slot Map with Reserve & Undo
 ✅ Clean, Minimal & Professional UI
 ✅ Fully Responsive Design
-
----
-
-## 🎥 Demo Preview
-
-<p align="center">
-  <img src="https://media.giphy.com/media/Ll22OhMLAlVDb8UQWe/giphy.gif" width="600" alt="Demo Animation"/>
-</p>
 
 ---
 
@@ -166,20 +170,6 @@ npm start
 3. Navigate to profile → See welcome message + info icon
 4. Go to **Basement Map** → Reserve a slot (🅿️ button)
 5. Undo reservation anytime 🔄
-
----
-
-### 🔐 Login Page
-
-<p align="center">
-  <img src="https://via.placeholder.com/600x300.png?text=Login+Page" alt="Login Page"/>
-</p>  
-
-### 🅿️ Basement Map
-
-<p align="center">
-  <img src="https://via.placeholder.com/600x300.png?text=Basement+Map" alt="Basement Map"/>
-</p>  
 
 ---
 

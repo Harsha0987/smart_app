@@ -9,7 +9,7 @@ function Navbar() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // ✅ Check if user is logged in
+  // Check if user is logged in
   const storedUser = JSON.parse(localStorage.getItem("user"));
 
   return (
