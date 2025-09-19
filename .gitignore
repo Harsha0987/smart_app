@@ -2,8 +2,7 @@
 .env
 .env.*
 .env/
-client/.env
-server/.env
+
 
 # Node modules
 node_modules/
