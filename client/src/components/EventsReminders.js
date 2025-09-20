@@ -13,13 +13,14 @@ function EventsReminders({ onEventsUpdate }) {
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(null);
 
-  const API_URL = process.env.REACT_APP_API_URL;
+  
+  const API_URL = "https://smart-app-nlel.onrender.com/api/events";
 
   const fetchEvents = useCallback(async () => {
     try {
       const res = await axios.get(API_URL);
       setEvents(res.data);
-      if (onEventsUpdate) onEventsUpdate(res.data); 
+      if (onEventsUpdate) onEventsUpdate(res.data);
     } catch (err) {
       console.error("Error fetching events:", err);
       toast.error("Failed to load events");
@@ -30,10 +31,10 @@ function EventsReminders({ onEventsUpdate }) {
     fetchEvents();
   }, [fetchEvents]);
 
-  
-  const showSuccess = (msg) => toast.success(`✅ ${msg}`, { position: "top-center", autoClose: 2000 });
-  const showError = (msg) => toast.error(`❌ ${msg}`, { position: "top-center", autoClose: 3000 });
-
+  const showSuccess = (msg) =>
+    toast.success(`✅ ${msg}`, { position: "top-center", autoClose: 2000 });
+  const showError = (msg) =>
+    toast.error(`❌ ${msg}`, { position: "top-center", autoClose: 3000 });
 
   const handleAddOrSave = async () => {
     if (input.trim() === "" || date === "") {
@@ -45,23 +46,20 @@ function EventsReminders({ onEventsUpdate }) {
       const payload = { text: input.trim(), date: new Date(date).toISOString() };
 
       if (editingEvent) {
-        
         const res = await axios.put(`${API_URL}/${editingEvent._id}`, payload);
-       
-        setEvents((prev) => prev.map((e) => (e._id === editingEvent._id ? res.data : e)));
+        setEvents((prev) =>
+          prev.map((e) => (e._id === editingEvent._id ? res.data : e))
+        );
         setEditingEvent(null);
         showSuccess("Event updated");
         if (onEventsUpdate) onEventsUpdate(await fetchLatestEvents());
       } else {
-      
         const res = await axios.post(API_URL, payload);
-       
         setEvents((prev) => [res.data, ...prev]);
         showSuccess("Event created");
         if (onEventsUpdate) onEventsUpdate(await fetchLatestEvents());
       }
 
-     
       setInput("");
       setDate("");
     } catch (err) {
@@ -70,7 +68,6 @@ function EventsReminders({ onEventsUpdate }) {
     }
   };
 
-  // helper to fetch fresh events and return them
   const fetchLatestEvents = async () => {
     try {
       const r = await axios.get(API_URL);
@@ -82,11 +79,9 @@ function EventsReminders({ onEventsUpdate }) {
     }
   };
 
-  // Start editing: populate inputs
   const startEdit = (ev) => {
     setEditingEvent(ev);
     setInput(ev.text || ev.title || "");
-    // convert server date -> datetime-local format: "YYYY-MM-DDTHH:mm"
     try {
       const iso = new Date(ev.date || ev.eventDate || ev.createdAt).toISOString();
       setDate(iso.slice(0, 16));
@@ -96,18 +91,15 @@ function EventsReminders({ onEventsUpdate }) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Confirm delete: open modal
   const confirmDelete = (ev) => {
     setEventToDelete(ev);
     setShowDeletePopup(true);
   };
 
-  // Do delete
   const handleDelete = async () => {
     if (!eventToDelete) return;
     try {
       await axios.delete(`${API_URL}/${eventToDelete._id}`);
-      // remove from UI
       setEvents((prev) => prev.filter((e) => e._id !== eventToDelete._id));
       setShowDeletePopup(false);
       showSuccess("Event deleted");
@@ -121,7 +113,6 @@ function EventsReminders({ onEventsUpdate }) {
     }
   };
 
-  // Cancel edit
   const cancelEdit = () => {
     setEditingEvent(null);
     setInput("");
@@ -139,7 +130,9 @@ function EventsReminders({ onEventsUpdate }) {
           transition={{ duration: 0.45 }}
           className="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-6"
         >
-          <h2 className="text-2xl font-bold text-indigo-700 text-center mb-4">📅 Events & Reminders</h2>
+          <h2 className="text-2xl font-bold text-indigo-700 text-center mb-4">
+            📅 Events & Reminders
+          </h2>
 
           {/* Form */}
           <div className="flex flex-col md:flex-row gap-3 mb-6">
@@ -238,7 +231,9 @@ function EventsReminders({ onEventsUpdate }) {
               transition={{ duration: 0.18 }}
               className="bg-white rounded-xl shadow-xl p-6 max-w-sm w-full text-center"
             >
-              <h3 className="text-lg font-semibold text-red-600 mb-2">⚠️ Confirm delete</h3>
+              <h3 className="text-lg font-semibold text-red-600 mb-2">
+                ⚠️ Confirm delete
+              </h3>
               <p className="text-gray-700 mb-4">
                 Are you sure you want to delete <b>{eventToDelete?.text}</b>? This cannot be undone.
               </p>
