@@ -9,6 +9,11 @@ A **full-stack MERN application** with a **modern frontend (React)** and a **sec
 This app includes **user authentication (register/login)**, **profile management**, and a **basement parking slot reservation system with undo functionality**.  
 
 ---
+**Project Live Link:-** https://smart-neighborhood-app.netlify.app/
+
+**Github Repo Link:-**  https://github.com/Harsha0987/smart_app.git
+
+---
 
 ## ⚡ Skills & Tech Stack
 
